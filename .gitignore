@@ -1,0 +1,11 @@
+# Ignorar o Ambiente Virtual
+/meu_app/
+
+# Ignorar TODOS os dados (CSVs e Parquet)
+# Esta é a parte mais importante que faltou
+/src/dados/
+/ouvidoria.parquet
+
+# Ignorar pastas de cache do Python
+__pycache__/
+*.pyc

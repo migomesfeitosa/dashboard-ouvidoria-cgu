@@ -1,0 +1,21 @@
+/* Mira no dropdown que marcamos com a classe 'dropdown-hide-selected' */
+.dropdown-hide-selected .Select-value {
+  /* Esconde as caixinhas cinzas (ex: [x] AC) */
+  display: none !important;
+}
+
+.dropdown-hide-selected .Select-multi-value-wrapper {
+  /* Remove o espaço extra deixado pelas caixinhas escondidas */
+  height: 100%;
+}
+
+.dropdown-hide-selected .Select-placeholder {
+  /* Força o texto do 'placeholder' a aparecer,
+     mesmo quando há valores selecionados */
+  display: inline-block !important;
+
+  /* Alinhamento vertical para o texto do placeholder */
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
