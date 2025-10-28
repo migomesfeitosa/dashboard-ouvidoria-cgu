@@ -66,6 +66,8 @@ def limpar_dataframe(df):
     # Remove linhas onde a data de registro falhou
     df.dropna(subset=['data_registro', 'ano_registro'], inplace=True)
     df['ano_registro'] = df['ano_registro'].astype(int)
+    df['ano_registro'] = pd.to_numeric(df['ano_registro'], errors='coerce').fillna(0).astype(int)
+
 
     return df
 
