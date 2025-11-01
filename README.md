@@ -1,4 +1,6 @@
 <img width="1915" height="877" alt="image" src="https://github.com/user-attachments/assets/b3337489-ad19-471f-9d14-feebcebeb16b" />
+<img width="1902" height="882" alt="image" src="https://github.com/user-attachments/assets/bbb3a463-a59b-4988-86a0-e35c7729f816" />
+
 
 eda_ouvidoria.py (Com melhorias visuais)
 import pandas as pd import plotly.express as px
