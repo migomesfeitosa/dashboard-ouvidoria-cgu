@@ -62,13 +62,14 @@ def limpar_dataframe(df):
 
     if 'data_registro' in df.columns:
         df['ano_registro'] = df['data_registro'].dt.year
-    
-    # Remove linhas onde a data de registro falhou
-    df.dropna(subset=['data_registro', 'ano_registro'], inplace=True)
-    df['ano_registro'] = df['ano_registro'].astype(int)
+
+    # Remove linhas sem data de registro
+    df.dropna(subset=['data_registro'], inplace=True)
+
+    # Garante que o ano é numérico e substitui NA por 0
     df['ano_registro'] = pd.to_numeric(df['ano_registro'], errors='coerce').fillna(0).astype(int)
 
-
+    
     return df
 
 # --- Função Principal do ETL ---
@@ -112,6 +113,13 @@ def executar_etl():
             print(f"  ERRO ao ler {arquivo_csv}: {e}")
             continue 
 
+        # --- Correção final: força tipos compatíveis com Parquet ---
+        for col in df_limpo.columns:
+            if df_limpo[col].dtype == "Int64":  # tipo inteiro com suporte a NA (pandas)
+                df_limpo[col] = df_limpo[col].fillna(0).astype("int64")
+            elif df_limpo[col].dtype == "boolean":
+                df_limpo[col] = df_limpo[col].fillna(False).astype(bool)
+
         # 2. Limpa o DataFrame
         df_limpo = limpar_dataframe(df_temp)
         
@@ -121,13 +129,13 @@ def executar_etl():
             continue
             
         try:
-            # Usando 'fastparquet'
+            # Usando 'pyarrow'
             if i == 0:
                 # Cria o arquivo na primeira vez
-                df_limpo.to_parquet(ARQUIVO_PARQUET_FINAL, engine='fastparquet')
+                df_limpo.to_parquet(ARQUIVO_PARQUET_FINAL, engine='pyarrow')
             else:
                 # Anexa nas vezes seguintes
-                df_limpo.to_parquet(ARQUIVO_PARQUET_FINAL, engine='fastparquet', append=True)
+                df_limpo.to_parquet(ARQUIVO_PARQUET_FINAL, engine='pyarrow', append=True)
         except Exception as e:
              print(f"  ERRO FATAL ao salvar Parquet: {e}")
              break # Para o loop se o salvamento falhar
