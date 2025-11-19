@@ -1,0 +1,11 @@
+﻿venv/
+.venv/
+env/
+meu_app/
+src/dados/
+*.parquet
+*.csv
+__pycache__/
+*.pyc
+.vscode/
+.idea/

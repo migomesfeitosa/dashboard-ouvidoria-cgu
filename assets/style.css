@@ -1,0 +1,46 @@
+/* Mira no dropdown que marcamos com a classe 'dropdown-hide-selected' */
+.dropdown-hide-selected .Select-value {
+  /* Esconde as caixinhas cinzas (ex: [x] AC) */
+  display: none !important;
+}
+
+.dropdown-hide-selected .Select-multi-value-wrapper {
+  /* Remove o espaço extra deixado pelas caixinhas escondidas */
+  height: 100%;
+}
+
+.dropdown-hide-selected .Select-placeholder {
+  /* Força o texto do 'placeholder' a aparecer,
+     mesmo quando há valores selecionados */
+  display: inline-block !important;
+
+  /* Alinhamento vertical para o texto do placeholder */
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
+
+/* assets/style.css */
+
+.kpi-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    flex: 1; /* Faz todos os cards terem o mesmo tamanho */
+}
+
+.kpi-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+}
+
+.kpi-value {
+    font-size: 2.2em;
+    font-weight: bolder;
+    color: #111;
+    margin-top: 5px;
+}
