@@ -25,7 +25,7 @@ try:
     # Verifica se a coluna é numérica
     if pd.api.types.is_numeric_dtype(df['dias_de_atraso']):
         print(f"Linhas com atraso (dias_de_atraso > 0): { (df['dias_de_atraso'] > 0).sum() }")
-        print(f"Média de dias de atraso: { df[df['dias_de_atraso'] > 0]['dias_de_atraso'].mean():.2f } dias")
+        print(f"Média de dias de atraso: { df[df['dias_de_atraso'] > 0]['dias_de_atraso'].mean():.2f} dias")
         print(f"Atraso máximo: { df['dias_de_atraso'].max() } dias")
     else:
         print("AVISO: A coluna 'dias_de_atraso' não é numérica. Verifique o etl.py.")
